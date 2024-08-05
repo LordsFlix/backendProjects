@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App - BackEnd</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="w-full min-h-screen bg-zinc-900 p-10" id="main">
+        <h1 class="tracking-tighter text-white text-4xl text-center">Notes App</h1>
+        <div class="notes-container w-full min-h-screen mt-10 p-10 flex gap-3 flex-wrap">
+            <% if(files.length > 0){ %>
+                <% files.forEach(function(val){ %>
+                    <div class="notes w-[200px] h-[140px] rounded-lg text-black relative border border-white">
+                        <p class="text-center text-xl absolute top-1/2 left-1/2"><%= val %></p>
+                        <a href="/read/<%= val %>" class="text-blue-800 underline absolute bottom-2 right-2">Read Full</a>
+                    </div>
+                <% }); %>
+            <% } else {%> 
+                <h3 class="text-zinc-600">No Notes Yet... Create Some...</h3>
+            <%  } %>
+                
+        </div>
+        <div class="createBtn fixed bottom-10 right-10 bg-blue-500 text-white flex items-center justify-center"><a class="ri-pencil-line text-3xl" href="/create"></a></div>
+    </div>
+    <script>
+        notes = document.querySelectorAll(".notes");
+        // notes.style.backgroundColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+        notes.forEach(note => {
+            note.style.backgroundColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+        });
+        // var clutter = "";
+        // if(file.length > 0){
+        //     file.forEach(function(val) {
+        //         clutter += `<div class="notes w-[200px] h-[140px] rounded-lg text-black relative border border-white">
+        //             <p class="text-center text-xl absolute top-1/2 left-1/2">Note ${val.name}</p>
+        //             <a href="/notes/${val.name}" class="text-blue-800 underline absolute bottom-2 right-2">Read Full</a>
+        //         </div>`;
+        //         var notesCont = document.querySelector('.notes-container');
+        //         notesCont.innerHTML += clutter;
+        //     })
+        // } else{
+        //     clutter += `<h3 class="text-zinc-700">No Notes Yet... Create Some...</h3>`;
+        //     var notesCont = document.querySelector('.notes-container');
+        //     notesCont.innerHTML += clutter;
+        // }
+    </script>
+    <!-- <script src="javascripts/script.js"></script> -->
+</body>
+</html>
